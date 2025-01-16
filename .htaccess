@@ -15,6 +15,7 @@
 # Set correct headers for service worker
 <Files "firebase-messaging-sw.js">
     Header set Service-Worker-Allowed "/"
+<<<<<<< HEAD
     Header set Content-Type "application/javascript"
     Header set Cache-Control "no-cache, no-store, must-revalidate"
     Header set Pragma "no-cache"
@@ -25,3 +26,6 @@
 Header set Access-Control-Allow-Origin "*"
 Header set Access-Control-Allow-Methods "GET, POST, OPTIONS"
 Header set Access-Control-Allow-Headers "Content-Type" 
+=======
+</Files> 
+>>>>>>> 6d4cd40654e12475c14b54d24740d7475411dd12
