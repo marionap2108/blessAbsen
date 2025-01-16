@@ -1,5 +1,5 @@
 RewriteEngine On
-
+RewriteBase /blessAbsen/
 
 # Allow direct access to service worker files
 RewriteCond %{REQUEST_FILENAME} -f
