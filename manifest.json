@@ -1,0 +1,25 @@
+{
+  "name": "BlessAbsen-V1",
+  "short_name": "BlessAbsen",
+  "start_url": "/blessAbsen/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4CAF50",
+  "orientation": "portrait",
+  "gcm_sender_id": "44035837656",
+  "description": "Aplikasi Absensi dan Chat Sederhana",
+  "categories": ["productivity", "utilities"],
+  "icons": [
+    {
+      "src": "image/blessLogo-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "image/blessLogo-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+} 

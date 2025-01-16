@@ -1,0 +1,22 @@
+RewriteEngine On
+RewriteBase /blessAbsen/
+
+# Allow direct access to service worker files
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^firebase-messaging-sw\.js$ - [L]
+
+# Jika file atau direktori tidak ada, arahkan ke index.html
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.html [L]
+
+# Izinkan akses ke semua file statis
+<FilesMatch "\.(html|css|js|json|png|jpg|jpeg|gif|mp3|svg|ico)$">
+    Order Allow,Deny
+    Allow from all
+</FilesMatch>
+
+# Set header untuk service worker
+<Files "firebase-messaging-sw.js">
+    Header set Service-Worker-Allowed "/"
+</Files> 
