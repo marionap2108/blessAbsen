@@ -28,6 +28,20 @@ if (currentDeviceId) {
 // Fungsi untuk mendapatkan token FCM
 async function getFCMToken() {
   try {
+    console.log('Memulai proses getFCMToken...');
+    
+    // Log device info
+    console.log('Device Info:', {
+      userAgent: navigator.userAgent,
+      platform: navigator.platform,
+      vendor: navigator.vendor
+    });
+
+    // Cek service worker support
+    if (!('serviceWorker' in navigator)) {
+      throw new Error('Service Worker tidak didukung di browser ini');
+    }
+
     // Hapus registrasi service worker lama jika ada
     const registrations = await navigator.serviceWorker.getRegistrations();
     for (let registration of registrations) {
@@ -52,9 +66,14 @@ async function getFCMToken() {
       throw new Error('Tidak bisa mendapatkan token FCM');
     }
 
+    console.log('Token berhasil didapatkan:', token);
     return token;
   } catch (error) {
-    console.error('Error getting token:', error);
+    console.error('Error detail:', {
+      name: error.name,
+      message: error.message,
+      stack: error.stack
+    });
     throw error;
   }
 }

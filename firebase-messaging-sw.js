@@ -25,7 +25,17 @@ messaging.onBackgroundMessage(function(payload) {
     requireInteraction: true,
     vibrate: [200, 100, 200],
     data: payload.data,
-    timestamp: Date.now()
+    timestamp: Date.now(),
+    actions: [
+      {
+        action: 'open',
+        title: 'Buka'
+      },
+      {
+        action: 'close',
+        title: 'Tutup'
+      }
+    ]
   };
 
   return self.registration.showNotification(notificationTitle, notificationOptions);
@@ -43,32 +53,25 @@ self.addEventListener('activate', (event) => {
 // Handle notification click
 self.addEventListener('notificationclick', function(event) {
   event.notification.close();
-  const urlToOpen = '/';
 
-  // Clear other notifications when one is clicked
-  self.registration.getNotifications().then(notifications => {
-    notifications.forEach(notification => {
-      if (notification.tag !== event.notification.tag) {
-        notification.close();
-      }
-    });
-  });
-
-  event.waitUntil(
-    clients.matchAll({
-      type: 'window',
-      includeUncontrolled: true
-    })
-    .then(function(clientList) {
-      for (let i = 0; i < clientList.length; i++) {
-        const client = clientList[i];
-        if (client.url.includes(urlToOpen)) {
-          return client.focus();
+  if (event.action === 'open') {
+    // Buka aplikasi
+    event.waitUntil(
+      clients.matchAll({
+        type: 'window',
+        includeUncontrolled: true
+      })
+      .then(function(clientList) {
+        for (let i = 0; i < clientList.length; i++) {
+          const client = clientList[i];
+          if ('focus' in client) {
+            return client.focus();
+          }
         }
-      }
-      return clients.openWindow(urlToOpen);
-    })
-  );
+        return clients.openWindow('/');
+      })
+    );
+  }
 });
 
 // Handle push event directly
