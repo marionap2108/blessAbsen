@@ -189,7 +189,7 @@ document.getElementById('messageForm').addEventListener('submit', async (e) => {
     });
 
     // Kirim ke server untuk push notification
-    const response = await fetch('/blessAbsen/send_message.php', {
+    const response = await fetch('https://your-php-server.com/send_message.php', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

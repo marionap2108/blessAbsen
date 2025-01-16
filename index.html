@@ -3,50 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#4CAF50">
-  <title>Simple Chat PWA</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="manifest" href="manifest.json">
-  <link rel="apple-touch-icon" href="/blessAbsen/image/blessLogo-192.png">
-  <script>
-    // Daftarkan service worker setelah halaman dimuat
-    window.addEventListener('load', async () => {
-      try {
-        if ('serviceWorker' in navigator) {
-          const registration = await navigator.serviceWorker.register('/blessAbsen/firebase-messaging-sw.js', {
-            scope: '/blessAbsen/'
-          });
-          console.log('Service Worker berhasil didaftarkan:', registration);
-        }
-      } catch (error) {
-        console.error('Registrasi Service Worker gagal:', error);
-      }
-    });
-  </script>
+  <title>BlessAbsen</title>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" href="/image/blessLogo-192.png">
 </head>
 <body>
-  <h1>Simple Chat PWA</h1>
+  <h1>BlessAbsen</h1>
   <div class="device-registration">
-    <label for="deviceId">Device ID Anda:</label>
-    <input type="text" id="deviceId" placeholder="Misal: 001, 002, dst" />
+    <input type="text" id="deviceId" placeholder="Masukkan Device ID">
     <button id="register">Daftarkan Device</button>
   </div>
-  <div class="message-form">
-    <h2>Kirim Pesan</h2>
-    <form id="messageForm">
-      <input type="text" id="to" placeholder="Kirim ke (Device ID)" required />
-      <textarea id="message" placeholder="Isi pesan" required></textarea>
-      <button type="submit">Kirim</button>
-    </form>
-  </div>
-  <div class="messages-container">
-    <h2>Pesan Masuk</h2>
-    <div id="messages"></div>
-  </div>
-
+  <form id="messageForm">
+    <input type="text" id="to" placeholder="Kirim ke Device ID">
+    <textarea id="message" placeholder="Pesan"></textarea>
+    <button type="submit">Kirim</button>
+  </form>
+  <div id="messages"></div>
   <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-messaging-compat.js"></script>
-  <script src="app.js"></script>
+  <script src="/app.js"></script>
 </body>
 </html>
