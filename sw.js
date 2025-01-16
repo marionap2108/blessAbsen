@@ -1,13 +1,13 @@
 const CACHE_NAME = 'blessabsen-v1';
 const urlsToCache = [
-  '/blessAbsen/',
-  '/blessAbsen/index.html',
-  '/blessAbsen/style.css',
-  '/blessAbsen/app.js',
-  '/blessAbsen/manifest.json',
-  '/blessAbsen/image/blessLogo-192.png',
-  '/blessAbsen/image/blessLogo-512.png',
-  '/blessAbsen/sound/notifikasi.mp3'
+  '/',
+  '/index.html',
+  '/style.css',
+  '/app.js',
+  '/manifest.json',
+  '/image/blessLogo-192.png',
+  '/image/blessLogo-512.png',
+  '/sound/notifikasi.mp3'
 ];
 
 // Install Service Worker
@@ -96,8 +96,8 @@ messaging.onBackgroundMessage((payload) => {
 
   return self.registration.showNotification(`Pesan dari ${payload.data.from || 'Unknown'}`, {
     body: payload.data.message || 'Ada pesan baru',
-    icon: '/blessAbsen/image/blessLogo-192.png',
-    badge: '/blessAbsen/image/blessLogo-192.png',
+    icon: '/image/blessLogo-192.png',
+    badge: '/image/blessLogo-192.png',
     tag: 'chat-message',
     requireInteraction: true,
     vibrate: [200, 100, 200],
