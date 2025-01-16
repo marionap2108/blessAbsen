@@ -2,22 +2,22 @@
   "version": 2,
   "routes": [
     {
-      "src": "/blessAbsen/firebase-messaging-sw.js",
+      "src": "/firebase-messaging-sw.js",
       "headers": {
         "cache-control": "s-maxage=0",
         "Service-Worker-Allowed": "/",
         "Content-Type": "application/javascript"
       },
-      "dest": "/blessAbsen/firebase-messaging-sw.js"
+      "dest": "/firebase-messaging-sw.js"
     },
     {
-      "src": "/blessAbsen/(.*)",
-      "dest": "/blessAbsen/$1"
+      "src": "/(.*)",
+      "dest": "/$1"
     }
   ],
   "headers": [
     {
-      "source": "/blessAbsen/(.*)",
+      "source": "/(.*)",
       "headers": [
         {
           "key": "Service-Worker-Allowed",

@@ -18,14 +18,14 @@ messaging.onBackgroundMessage(function(payload) {
   const notificationTitle = `Pesan dari ${payload.data.from || 'Unknown'}`;
   const notificationOptions = {
     body: payload.data.message || 'Ada pesan baru',
-    icon: '/blessAbsen/image/blessLogo-192.png',
-    badge: '/blessAbsen/image/blessLogo-192.png',
-    tag: Date.now().toString(), // Tambahkan timestamp sebagai tag unik
-    renotify: true, // Paksa notifikasi baru muncul
+    icon: '/image/blessLogo-192.png',
+    badge: '/image/blessLogo-192.png',
+    tag: Date.now().toString(),
+    renotify: true,
     requireInteraction: true,
     vibrate: [200, 100, 200],
     data: payload.data,
-    timestamp: Date.now() // Tambahkan timestamp
+    timestamp: Date.now()
   };
 
   return self.registration.showNotification(notificationTitle, notificationOptions);
@@ -43,7 +43,7 @@ self.addEventListener('activate', (event) => {
 // Handle notification click
 self.addEventListener('notificationclick', function(event) {
   event.notification.close();
-  const urlToOpen = '/blessAbsen/';
+  const urlToOpen = '/';
 
   // Clear other notifications when one is clicked
   self.registration.getNotifications().then(notifications => {
@@ -78,8 +78,8 @@ self.addEventListener('push', function(event) {
     const notificationTitle = `Pesan dari ${payload.data.from || 'Unknown'}`;
     const notificationOptions = {
       body: payload.data.message || 'Ada pesan baru',
-      icon: '/blessAbsen/image/blessLogo-192.png',
-      badge: '/blessAbsen/image/blessLogo-192.png',
+      icon: '/image/blessLogo-192.png',
+      badge: '/image/blessLogo-192.png',
       tag: Date.now().toString(),
       renotify: true,
       requireInteraction: true,

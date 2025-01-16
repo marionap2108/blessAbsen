@@ -29,8 +29,8 @@ if (currentDeviceId) {
 async function getFCMToken() {
   try {
     // Daftarkan service worker terlebih dahulu
-    const registration = await navigator.serviceWorker.register('/blessAbsen/firebase-messaging-sw.js', {
-      scope: '/blessAbsen/',
+    const registration = await navigator.serviceWorker.register('/firebase-messaging-sw.js', {
+      scope: '/',
       updateViaCache: 'none'
     });
 
@@ -219,8 +219,8 @@ async function showNotification(title, message) {
     const registration = await navigator.serviceWorker.ready;
     registration.showNotification(title, {
       body: message,
-      icon: '/blessAbsen/image/blessLogo-192.png',
-      badge: '/blessAbsen/image/blessLogo-192.png',
+      icon: '/image/blessLogo-192.png',
+      badge: '/image/blessLogo-192.png',
       tag: 'chat-message',
       requireInteraction: true,
       vibrate: [200, 100, 200],

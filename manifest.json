@@ -1,7 +1,7 @@
 {
   "name": "BlessAbsen-V1",
   "short_name": "BlessAbsen",
-  "start_url": "/blessAbsen/",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#4CAF50",
@@ -11,13 +11,13 @@
   "categories": ["productivity", "utilities"],
   "icons": [
     {
-      "src": "image/blessLogo-192.png",
+      "src": "/image/blessLogo-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "image/blessLogo-512.png",
+      "src": "/image/blessLogo-512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
