@@ -3,15 +3,20 @@
   "routes": [
     {
       "src": "/firebase-messaging-sw.js",
+      "dest": "/firebase-messaging-sw.js",
       "headers": {
-        "cache-control": "s-maxage=0",
+        "cache-control": "no-cache",
         "Service-Worker-Allowed": "/",
         "Content-Type": "application/javascript"
-      },
-      "dest": "/firebase-messaging-sw.js"
+      }
     },
     {
-      "handle": "filesystem"
+      "src": "/manifest.json",
+      "dest": "/manifest.json"
+    },
+    {
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
     },
     {
       "src": "/(.*)",
@@ -29,14 +34,6 @@
         {
           "key": "Access-Control-Allow-Origin",
           "value": "*"
-        },
-        {
-          "key": "Access-Control-Allow-Methods",
-          "value": "GET, POST, OPTIONS"
-        },
-        {
-          "key": "Access-Control-Allow-Headers",
-          "value": "Content-Type"
         }
       ]
     }

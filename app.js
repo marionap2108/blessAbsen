@@ -28,10 +28,15 @@ if (currentDeviceId) {
 // Fungsi untuk mendapatkan token FCM
 async function getFCMToken() {
   try {
-    // Daftarkan service worker terlebih dahulu
+    // Hapus registrasi service worker lama jika ada
+    const registrations = await navigator.serviceWorker.getRegistrations();
+    for (let registration of registrations) {
+      await registration.unregister();
+    }
+
+    // Daftarkan service worker baru
     const registration = await navigator.serviceWorker.register('/firebase-messaging-sw.js', {
-      scope: '/',
-      updateViaCache: 'none'
+      scope: '/'
     });
 
     // Tunggu sampai service worker aktif
