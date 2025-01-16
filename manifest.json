@@ -26,5 +26,11 @@
   "prefer_related_applications": false,
   "related_applications": [],
   "scope": "/",
-  "shortcuts": []
+  "shortcuts": [],
+  "permissions": [
+    "gcm",
+    "notifications",
+    "vibrate",
+    "wake-lock"
+  ]
 } 

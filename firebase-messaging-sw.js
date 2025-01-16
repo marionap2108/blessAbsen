@@ -15,6 +15,8 @@ const messaging = firebase.messaging();
 
 // Handle background messages
 messaging.onBackgroundMessage(function(payload) {
+  console.log('[firebase-messaging-sw.js] Received background message:', payload);
+  
   const notificationTitle = `Pesan dari ${payload.data.from || 'Unknown'}`;
   const notificationOptions = {
     body: payload.data.message || 'Ada pesan baru',
@@ -35,7 +37,10 @@ messaging.onBackgroundMessage(function(payload) {
         action: 'close',
         title: 'Tutup'
       }
-    ]
+    ],
+    // Tambahkan opsi untuk mobile
+    silent: false,
+    sound: 'default'
   };
 
   return self.registration.showNotification(notificationTitle, notificationOptions);
