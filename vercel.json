@@ -1,0 +1,41 @@
+{
+  "version": 2,
+  "routes": [
+    {
+      "src": "/blessAbsen/firebase-messaging-sw.js",
+      "headers": {
+        "cache-control": "s-maxage=0",
+        "Service-Worker-Allowed": "/",
+        "Content-Type": "application/javascript"
+      },
+      "dest": "/blessAbsen/firebase-messaging-sw.js"
+    },
+    {
+      "src": "/blessAbsen/(.*)",
+      "dest": "/blessAbsen/$1"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/blessAbsen/(.*)",
+      "headers": [
+        {
+          "key": "Service-Worker-Allowed",
+          "value": "/"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET, POST, OPTIONS"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "Content-Type"
+        }
+      ]
+    }
+  ]
+} 

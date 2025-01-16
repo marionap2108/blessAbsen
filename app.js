@@ -30,7 +30,8 @@ async function getFCMToken() {
   try {
     // Daftarkan service worker terlebih dahulu
     const registration = await navigator.serviceWorker.register('/blessAbsen/firebase-messaging-sw.js', {
-      scope: '/blessAbsen/'
+      scope: '/blessAbsen/',
+      updateViaCache: 'none'
     });
 
     // Tunggu sampai service worker aktif

@@ -32,16 +32,12 @@ messaging.onBackgroundMessage(function(payload) {
 });
 
 // Keep service worker active
-self.addEventListener('activate', event => {
-  event.waitUntil(
-    Promise.all([
-      self.clients.claim(),
-      // Clear old notifications
-      self.registration.getNotifications().then(notifications => {
-        notifications.forEach(notification => notification.close());
-      })
-    ])
-  );
+self.addEventListener('install', (event) => {
+  event.waitUntil(self.skipWaiting());
+});
+
+self.addEventListener('activate', (event) => {
+  event.waitUntil(self.clients.claim());
 });
 
 // Handle notification click

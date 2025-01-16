@@ -1,22 +1,27 @@
-RewriteEngine On
-RewriteBase /blessAbsen/
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /blessAbsen/
 
-# Allow direct access to service worker files
-RewriteCond %{REQUEST_FILENAME} -f
-RewriteRule ^firebase-messaging-sw\.js$ - [L]
+    # Allow direct access to service worker files
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteRule ^firebase-messaging-sw\.js$ - [L]
 
-# Jika file atau direktori tidak ada, arahkan ke index.html
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.html [L]
+    # Handle other files
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule . /blessAbsen/index.html [L]
+</IfModule>
 
-# Izinkan akses ke semua file statis
-<FilesMatch "\.(html|css|js|json|png|jpg|jpeg|gif|mp3|svg|ico)$">
-    Order Allow,Deny
-    Allow from all
-</FilesMatch>
-
-# Set header untuk service worker
+# Set correct headers for service worker
 <Files "firebase-messaging-sw.js">
     Header set Service-Worker-Allowed "/"
-</Files> 
+    Header set Content-Type "application/javascript"
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+</Files>
+
+# Enable CORS
+Header set Access-Control-Allow-Origin "*"
+Header set Access-Control-Allow-Methods "GET, POST, OPTIONS"
+Header set Access-Control-Allow-Headers "Content-Type" 
